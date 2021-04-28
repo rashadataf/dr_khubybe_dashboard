@@ -20,6 +20,7 @@ import LoyaltyIcon from "@material-ui/icons/Loyalty";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import PermContactCalendarIcon from "@material-ui/icons/PermContactCalendar";
 import BookIcon from "@material-ui/icons/Book";
+import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 
 const superRoutes = [
   {
@@ -44,6 +45,12 @@ const superRoutes = [
     path: "/references",
     name: "References",
     icon: BookIcon,
+    layout: "/super",
+  },
+  {
+    path: "/subscriptions",
+    name: "Subscriptions",
+    icon: SubscriptionsIcon,
     layout: "/super",
   },
 ];
