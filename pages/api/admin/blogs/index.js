@@ -2,7 +2,6 @@ import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../../util/mongodb";
 import nextConnect from "next-connect";
 import multer from "multer";
-import { Timestamp } from "bson";
 
 const fileStorage = multer.diskStorage({
   destination: "images",
@@ -124,7 +123,7 @@ apiRoute.post(async (req, res) => {
       tags: blogTags,
       references: blogReferences,
       createdBy,
-      createdAt: new Timestamp(),
+      createdAt: new Date(),
     });
     res.send(true);
   } catch (error) {

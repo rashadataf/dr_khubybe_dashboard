@@ -135,6 +135,7 @@ apiRoute.put(async (req, res) => {
           imageUrl,
           references: blogReferences,
           tags: blogTags,
+          updatedAt: new Date(),
         },
       }
     );
