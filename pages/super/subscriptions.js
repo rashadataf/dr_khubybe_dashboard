@@ -7,11 +7,11 @@ import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
 
 import ListIcon from "@material-ui/icons/List";
-import AddIcon from "@material-ui/icons/Add";
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import Super from "../../layouts/Super";
 import ListSubscriptions from "../../components/Subscriptions/ListSubscriptions";
-import NewEmail from "../../components/Subscriptions/NewEmail";
+import Settings from "../../components/Subscriptions/Settings";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -68,13 +68,13 @@ function Subscriptions() {
         textColor="primary"
       >
         <Tab icon={<ListIcon />} label="List Emails" {...a11yProps(0)} />
-        <Tab icon={<AddIcon />} label="Send Email" {...a11yProps(1)} />
+        <Tab icon={<SettingsIcon />} label="Settings" {...a11yProps(1)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <ListSubscriptions />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <NewEmail handleChange={handleChange} />
+        <Settings handleChange={handleChange} />
       </TabPanel>
     </Paper>
   );

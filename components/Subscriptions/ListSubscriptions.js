@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
@@ -12,7 +13,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import UnsubscribeIcon from "@material-ui/icons/Unsubscribe";
 
 import SuperServices from "../../services/super.services";
-import axios from "axios";
 
 function getModalStyle() {
   return {
@@ -56,29 +56,29 @@ export default function ListTags() {
     { field: "_id", flex: 1, hide: true },
     { field: "id", headerName: "ID" },
     { field: "email", headerName: "Email", flex: 1 },
-    {
-      field: "action",
-      headerName: " ",
-      flex: 1,
-      disableColumnMenu: true,
-      renderCell: (params) => (
-        <strong>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="small"
-            style={{ marginLeft: 16 }}
-            onClick={() => {
-              setId(params.row._id);
-              setDialogOpen(true);
-            }}
-            startIcon={<UnsubscribeIcon />}
-          >
-            Unsubscribe
-          </Button>
-        </strong>
-      ),
-    },
+    // {
+    //   field: "action",
+    //   headerName: " ",
+    //   flex: 1,
+    //   disableColumnMenu: true,
+    //   renderCell: (params) => (
+    //     <strong>
+    //       <Button
+    //         variant="contained"
+    //         color="secondary"
+    //         size="small"
+    //         style={{ marginLeft: 16 }}
+    //         onClick={() => {
+    //           setId(params.row._id);
+    //           setDialogOpen(true);
+    //         }}
+    //         startIcon={<UnsubscribeIcon />}
+    //       >
+    //         Unsubscribe
+    //       </Button>
+    //     </strong>
+    //   ),
+    // },
   ];
   const rows = [];
   if (emails) {

@@ -12,7 +12,11 @@ async function handler(req, res) {
   if (req.method === "POST") {
     try {
       const { client, db } = await connectToDatabase();
-      const emails = db.collection("emails");
+      const contacts = db.collection("contacts");
+      const firstName = req.body.firstName;
+      const lastName = req.body.lastName;
+      const phone = req.body.phone;
+      const subject = req.body.subject;
       const email = req.body.email;
       if (email.length === 0) {
         throw new Error("email can't be empty!");
@@ -23,33 +27,18 @@ async function handler(req, res) {
           throw new Error("an invalid email!");
         }
       }
+      const emails = db.collection("emails");
       let isEmailInDB = await emails.findOne({ email: email });
       if (isEmailInDB) {
         throw new Error("email already exist's!");
       }
-      const settings = await db.collection("settings").find({}).toArray();
-      if (settings.length > 0) {
-        const result = await emails.insertOne({ email: email });
-        const { apiKey, listID, server } = settings[0];
-        console.log(server);
-        const subscribingUser = {
-          email: email,
-        };
-        const mailchimp = require("@mailchimp/mailchimp_marketing");
-        mailchimp.setConfig({
-          apiKey: apiKey,
-          server: server,
-        });
-        const response = await mailchimp.lists.addListMember(listID, {
-          email_address: subscribingUser.email,
-          status: "subscribed",
-        });
-        if (response.id) {
-          return res.status(200).send(true);
-        }
-      } else {
-        throw new Error("there is no settings in database!!");
-      }
+      const result = await contacts.insertOne({
+        firstName,
+        lastName,
+        phone,
+        subject,
+        email,
+      });
       res.status(200).send(true);
     } catch (error) {
       res.status(400).send({ error: "there was an error happened!" });
