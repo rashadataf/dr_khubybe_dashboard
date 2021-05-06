@@ -3,6 +3,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 
@@ -19,7 +20,7 @@ function withMyHook(MyComponent) {
         width: "100%",
       },
       textField: {
-        width: "49%",
+        width: "100%",
       },
       button: {
         marginTop: theme.spacing(3),
@@ -46,11 +47,11 @@ function withMyHook(MyComponent) {
 class Contact extends React.Component {
   state = {
     _id: this.props._id || "",
-    firstName: this.props.firstName || "",
-    lastName: this.props.lastName || "",
+    name: this.props.name || "",
     email: this.props.email || "",
     phone: this.props.phone || "",
     subject: this.props.subject || "",
+    message: this.props.message || "",
   };
 
   render() {
@@ -59,19 +60,8 @@ class Contact extends React.Component {
         <div className={this.props.classes.root}>
           <div className={this.props.classes.title}>
             <TextField
-              label="First Name"
-              value={this.state.firstName}
-              className={this.props.classes.textField}
-              variant="outlined"
-            />
-          </div>
-          <div
-            className={this.props.classes.title}
-            style={{ marginTop: "2rem" }}
-          >
-            <TextField
-              label="Last Name"
-              value={this.state.lastName}
+              label="Name"
+              value={this.state.name}
               className={this.props.classes.textField}
               variant="outlined"
             />
@@ -107,6 +97,23 @@ class Contact extends React.Component {
               value={this.state.subject}
               className={this.props.classes.textField}
               variant="outlined"
+            />
+          </div>
+          <div
+            className={this.props.classes.title}
+            style={{ marginTop: "2rem" }}
+          >
+            <TextareaAutosize
+              aria-label="Message"
+              style={{
+                boxSizing: "border-box",
+                minWidth: "100%",
+                minHeight: "100px",
+                padding: "1rem",
+                fontSize: "1.2rem",
+                overflow: "scroll",
+              }}
+              placeholder="Message"
             />
           </div>
           <Button

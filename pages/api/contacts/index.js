@@ -16,10 +16,10 @@ async function handler(req, res) {
       try {
         const { client, db } = await connectToDatabase();
         const contacts = db.collection("contacts");
-        const firstName = req.body.firstName;
-        const lastName = req.body.lastName;
+        const name = req.body.name;
         const phone = req.body.phone;
         const subject = req.body.subject;
+        const message = req.body.message;
         const email = req.body.email;
         if (email.length === 0) {
           throw new Error("email can't be empty!");
@@ -31,10 +31,10 @@ async function handler(req, res) {
           }
         }
         const result = await contacts.insertOne({
-          firstName,
-          lastName,
+          name,
           phone,
           subject,
+          message,
           email,
         });
         res.status(200).send(true);

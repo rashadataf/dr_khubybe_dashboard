@@ -4,11 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import InfoIcon from "@material-ui/icons/Info";
 
 import Contact from "../../components/Contacts/Contact";
@@ -26,12 +21,13 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "60vw",
-    height: "90vh",
+    width: "80vw",
+    height: "95vh",
     backgroundColor: theme.palette.background.paper,
     border: "1px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    overflowX: "hidden",
   },
 }));
 
@@ -127,11 +123,11 @@ export default function ListContacts() {
             <h2 id="simple-modal-title">Contact Details</h2>
             <div id="simple-modal-description">
               <Contact
-                firstName={contact.firstName}
-                lastName={contact.lastName}
+                name={contact.name}
                 email={contact.email}
                 phone={contact.phone}
                 subject={contact.subject}
+                message={contact.message}
                 handleClose={handleClose}
               />
             </div>
