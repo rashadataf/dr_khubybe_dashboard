@@ -83,8 +83,7 @@ export default function Sidebar(props) {
   );
   var brand = (
     <div className={classes.logo}>
-      <a
-        href=""
+      <div
         className={classNames(classes.logoLink, {
           [classes.logoLinkRTL]: props.rtlActive,
         })}
@@ -92,8 +91,20 @@ export default function Sidebar(props) {
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
-        {logoText}
-      </a>
+        <div style={{ display: "inline-block", marginTop: "-0.4rem" }}>
+          <span style={{ color: "#50ba7b", display: "block" }}>Dr.Khubybe</span>
+          <span
+            style={{
+              color: "#686969",
+              display: "block",
+              fontSize: "0.6rem",
+              marginTop: "-0.7rem",
+            }}
+          >
+            Helping Rohingya To Be Healthier
+          </span>
+        </div>
+      </div>
     </div>
   );
   return (
