@@ -62,13 +62,13 @@ export default function Admin({ children, ...rest }) {
   };
   // initialize and destroy the PerfectScrollbar plugin
   React.useEffect(() => {
-    if (navigator.platform.indexOf("Win") > -1) {
-      ps = new PerfectScrollbar(mainPanel.current, {
-        suppressScrollX: true,
-        suppressScrollY: false,
-      });
-      document.body.style.overflow = "hidden";
-    }
+    // if (navigator.platform.indexOf("Win") > -1) {
+    //   ps = new PerfectScrollbar(mainPanel.current, {
+    //     suppressScrollX: true,
+    //     suppressScrollY: false,
+    //   });
+    //   document.body.style.overflow = "hidden";
+    // }
     window.addEventListener("resize", resizeFunction);
 
     getSession().then((session) => {
